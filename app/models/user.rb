@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  validates :password_digest, presence: true
   validates(
     :email,
     presence: true,
@@ -7,11 +8,8 @@ class User < ActiveRecord::Base
   )
   before_save :downcase_data
 
-
-  validates :password_digest, presence: true
-
-
   private
+
   def downcase_data
     self.email = email.downcase
   end
