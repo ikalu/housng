@@ -1,0 +1,9 @@
+<h2>All Users</h2>
+
+<% @users.each do |user| %>
+  <p><%= user.email %> 
+    <%= link_to "Make Resident Manager"  %>
+    <%= link_to "Make Resident Assistant" %>
+  </p>
+
+<% end %>

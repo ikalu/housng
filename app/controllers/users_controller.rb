@@ -16,6 +16,11 @@ class UsersController < ApplicationController
     end
   end
 
+#  def update
+#    user = User.find(params[:id])
+#    user[:resident_manager] = true
+#  end
+
   private
 
   def user_params
