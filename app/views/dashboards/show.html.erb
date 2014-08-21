@@ -1,1 +1,7 @@
-<p>Welcome to your page, please make sure to complete your housing application </p> 
+<% if current_user.admin? %>
+  <p>Welcome Admin</p>
+  <%= link_to "View all users", admin_users_path(@users) %> 
+<% else %>
+  <p>Welcome to your page, please make sure to complete your housing application</p>
+<% end %>
+

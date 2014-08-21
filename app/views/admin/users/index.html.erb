@@ -1,0 +1,15 @@
+<% if @user %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li> <%= message.downcase %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<% @users.each do |user| %>
+  <% if user != current_user %>
+    <p><%= user.email %> 
+      <%= toggle_resident_manager_link(user) %>
+      <%= toggle_resident_assistant_link(user) %>
+    <% end %>
+  <% end %>
