@@ -1,8 +1,11 @@
-<ul>
-  <% if @user %>
-    <li><%= @user.errors.full_messages.to_s.downcase %></li>
-  <% end %>
-</ul>
+<% if @user %>
+  <ul>
+    <% @user.errors.full_messages.each do |message| %>
+      <li> <%= message.downcase %> </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <% @users.each do |user| %>
   <% if user != current_user %>
     <p><%= user.email %> 
