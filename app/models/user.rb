@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  has_many :managements
+  has_many :halls, through: :managements
+
   validates :password_digest, presence: true
   validate :user_cannot_be_resident_manager_and_resident_assistant
   validates(
