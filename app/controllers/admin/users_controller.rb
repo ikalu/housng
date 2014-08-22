@@ -21,5 +21,4 @@ class Admin::UsersController < AdminController
     @user.toggle :resident_manager if params[:resident_manager]
     @user.toggle :resident_assistant if params[:resident_assistant]
   end
-
 end
