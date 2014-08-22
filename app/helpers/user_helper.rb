@@ -1,5 +1,5 @@
 module UserHelper
-  def toggle_resident_manager(user)
+  def toggle_resident_manager_link(user)
     if !user.resident_manager
       link_to "Make Resident Manager", admin_user_path(user, resident_manager: true), method: :put
     else
@@ -7,7 +7,7 @@ module UserHelper
     end
   end
 
-  def toggle_resident_assistant(user)
+  def toggle_resident_assistant_link(user)
     if !user.resident_assistant
       link_to "Make Resident Assistant", admin_user_path(user, resident_assistant: true), method: :put
     else

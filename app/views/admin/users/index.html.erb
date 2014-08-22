@@ -6,7 +6,7 @@
 <% @users.each do |user| %>
   <% if user != current_user %>
     <p><%= user.email %> 
-      <%= toggle_resident_manager(user) %>
-      <%= toggle_resident_assistant(user) %>
+      <%= toggle_resident_manager_link(user) %>
+      <%= toggle_resident_assistant_link(user) %>
     <% end %>
   <% end %>
