@@ -4,23 +4,22 @@ class Admin::UsersController < AdminController
   end
 
   def update
-    user = User.find(params[:id])
-    user.update(resident_manager: params[:resident_manager], resident_assistant: params[:resident_assistant])
+    @user = User.find(params[:id])
+    toggle_resident_manager_and_resident_assistant
 
-    redirect_to admin_users_path
+    if @user.save
+      redirect_to admin_users_path
+    else
+      @users = User.all
+      render "index" 
+    end
   end
 
-  #  def destroy
-  #    user = User.find(params[:id])
-  #    if params[:resident_manager]
-  #      user.destroy
-  #    elsif params[:resident_assistant]
-  #      user.destroy
-  #    end
-  #
-  #    redirect_to admin_users_path
-  #  end
+  private
 
-  private 
+  def toggle_resident_manager_and_resident_assistant
+    @user.toggle :resident_manager if params[:resident_manager]
+    @user.toggle :resident_assistant if params[:resident_assistant]
+  end
 
 end

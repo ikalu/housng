@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
     uniqueness: true,
     format: { with: /\A.+@claflin\.edu\z/i }
   )
+
   default_scope { order("email ASC") }
 
   before_save :downcase_data
@@ -19,7 +20,7 @@ class User < ActiveRecord::Base
 
   def user_cannot_be_resident_manager_and_resident_assistant
     if resident_manager && resident_assistant
-      errors.add(:resident_assistant, "can't be both an assistant AND a manager")
+      errors.add(self.email, "can't be both an assistant AND a manager")
     end
   end
 end
