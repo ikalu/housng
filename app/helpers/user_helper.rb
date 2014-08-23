@@ -14,4 +14,10 @@ module UserHelper
       link_to "Unmake Resident Assistant", admin_user_path(user, resident_assistant: false), method: :put
     end
   end
+
+  def hall_assignment_link(user)
+    if user.resident_manager || user.resident_assistant
+      link_to "Assign Hall", admin_management_halls_path(user)
+    end
+  end
 end

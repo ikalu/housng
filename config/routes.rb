@@ -16,6 +16,9 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :users, only: [:index, :update]
     resources :halls, only: [:index, :new, :create]
+    resources :managements, only: [:create] do
+      resources :halls, only: [:index]
+    end
   end
 
 end
