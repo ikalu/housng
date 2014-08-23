@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :managements
-  has_many :halls, through: :managements
+  has_many :hall_assignments
+  has_many :halls, through: :hall_assignments
 
   validates :password_digest, presence: true
   validate :user_cannot_be_resident_manager_and_resident_assistant
@@ -14,6 +14,10 @@ class User < ActiveRecord::Base
   default_scope { order("email ASC") }
 
   before_save :downcase_data
+
+  def staff?
+    resident_manager || resident_assistant
+  end
 
   private
 

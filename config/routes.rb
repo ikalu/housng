@@ -14,8 +14,16 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create]
 
   namespace :admin do
-    resources :users, only: [:index, :update]
+    resources :users, only: [:index, :update, :show] do
+      resources :halls do
+        member do
+          post "assign" => "hall_assignments#create"
+          delete "unassign" => "hall_assignments#destroy"
+        end
+      end
+    end
     resources :halls, only: [:index, :new, :create]
+    resources :hall_assignments, only: [:index]
   end
 
 end

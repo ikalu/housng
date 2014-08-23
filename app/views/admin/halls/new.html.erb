@@ -1,3 +1,17 @@
-<%= form_for(@hall) do |form| %>
-  Name <%= form.text_field :name %>
-  Number of Suites <%= form.
+<div>
+  <% if @hall.errors %>
+    <ul>
+      <% @hall.errors.full_messages.each do |error_message| %>
+        <li><%= error_message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <%= form_for ([:admin, @hall]) do |form| %>
+    Name <%= form.text_field :name %><br />
+    Number of Suites <%= form.text_field :number_of_suites %><br />
+    Number of Rooms <%= form.text_field :number_of_rooms %><br />
+
+    <%= form.submit %>
+  <% end %>
+</div>
