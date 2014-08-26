@@ -5,11 +5,11 @@
     <% @user.hall_assignments.each do |hall_assignment| %>
       <li>
         <%= hall_assignment.hall.name %>
-        <%= button_to "Unassign", unassign_admin_user_hall_path(@user, hall_assignment.hall), method: :delete%> 
+        <%= button_to "Unassign", unassign_admin_user_hall_path(@user, hall_assignment.hall), method: :delete %> 
       </li>
-    <% end%>
+    <% end %>
   <% else %>
-    <p><%= "NO HALL ASSIGNMENTS YET" %></p>
+    <p>NO HALL ASSIGNMENTS YET</p>
   <% end %>
 </ul>
 
@@ -19,7 +19,7 @@
     <% if @user.halls.exclude?(hall) %>
       <li>
         <%= hall.name %> 
-        <%= button_to "Assign", assign_admin_user_hall_path(@user, hall)%> 
+        <%= button_to "Assign", assign_admin_user_hall_path(@user, hall) %> 
       </li>
     <% end %>
   <% end %>
