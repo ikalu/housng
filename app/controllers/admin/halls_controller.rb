@@ -10,8 +10,7 @@ class Admin::HallsController < ApplicationController
   def create
     @hall = Hall.new(hall_params)
 
-    if @hall.valid?
-      @hall.save
+    if @hall.save?
       redirect_to admin_halls_path
     else 
       render :new

@@ -15,6 +15,10 @@ class User < ActiveRecord::Base
 
   before_save :downcase_data
 
+  def staff?
+    resident_manager || resident_assistant
+  end
+
   private
 
   def downcase_data

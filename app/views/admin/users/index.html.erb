@@ -11,7 +11,7 @@
     <p><%= user.email %> 
       <%= toggle_resident_manager_link(user) %>
       <%= toggle_resident_assistant_link(user) %>
-      <% if user.resident_manager || user.resident_assistant %>
+      <% if user.staff? %>
         <%= hall_assignment_link(user) %>
       <% end %>
     <% end %>
