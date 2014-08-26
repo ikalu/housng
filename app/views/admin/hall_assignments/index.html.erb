@@ -1,0 +1,5 @@
+<p>ACTIVE MANAGEMENT</P>
+
+<% @hall_assignments.each do |hall_assignment| %>
+  <p><%= hall_assignment.user.email if hall_assignment.user.valid? %></p>
+<% end %>

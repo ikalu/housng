@@ -1,6 +1,6 @@
 class Hall < ActiveRecord::Base
-  has_many :managements
-  has_many :users, through: :managements
+  has_many :hall_assignments
+  has_many :users, through: :hall_assignments
 
   validates :number_of_rooms, presence: true
 end

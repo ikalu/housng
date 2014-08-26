@@ -16,8 +16,6 @@ module UserHelper
   end
 
   def hall_assignment_link(user)
-    if user.resident_manager || user.resident_assistant
-      link_to "Assign Hall", admin_management_halls_path(user)
-    end
+      link_to "Hall Assignment", [:admin, user]
   end
 end

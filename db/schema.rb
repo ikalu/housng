@@ -1,5 +1,11 @@
-ActiveRecord::Schema.define(version: 20140822202600) do
+ActiveRecord::Schema.define(version: 20140825192521) do
   enable_extension "plpgsql"
+  create_table "hall_assignments", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "hall_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
   create_table "halls", force: true do |t|
     t.string   "name",             null: false
     t.integer  "number_of_suites"
@@ -8,12 +14,6 @@ ActiveRecord::Schema.define(version: 20140822202600) do
     t.datetime "updated_at",       null: false
   end
   add_index "halls", ["name"], name: "index_halls_on_name", unique: true, using: :btree
-  create_table "managements", force: true do |t|
-    t.integer  "user_id"
-    t.integer  "hall_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
   create_table "users", force: true do |t|
     t.string   "email",                              null: false
     t.string   "password_digest",                    null: false

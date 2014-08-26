@@ -2,6 +2,7 @@
   <p>Welcome Admin</p>
   <p><%= link_to "View all users", admin_users_path(@users) %> </p>
   <p><%= link_to "View all halls", admin_halls_path(@halls) %></p>
+  <p><%= link_to "Hall Assignments", admin_hall_assignments_path(@hall_assigments) %></p>
 <% else %>
   <p>Welcome to your page, please make sure to complete your housing application</p>
 <% end %>

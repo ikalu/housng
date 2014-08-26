@@ -1,0 +1,22 @@
+<p><%= @user.email %>'s page</p>
+<p>ASSIGNED HALLS</p>
+<ul>
+  <% if !@user.hall_assignments.empty? %>
+    <% @user.hall_assignments.each do |hall_assignment| %>
+      <li><%= hall_assignment.hall.name %>
+        <%= button_to "Unassign", unassign_admin_user_hall_path(@user, hall_assignment.hall), method: :delete%> </li>
+    <% end%>
+  <% else %>
+    <p><%= "NO HALL ASSIGNMENTS YET" %></p>
+  <% end %>
+</ul>
+
+<p>HALL LIST</p>
+<ul>
+  <% @halls.each do |hall| %>
+    <% if !@user.halls.include?(hall) %>
+      <li><%= hall.name %> 
+        <%= button_to "Assign", assign_admin_user_hall_path(@user, hall)%> </li>
+    <% end %>
+  <% end %>
+</ul>
