@@ -1,5 +1,42 @@
-ActiveRecord::Schema.define(version: 20140825192521) do
+ActiveRecord::Schema.define(version: 20140828191441) do
   enable_extension "plpgsql"
+  create_table "application_student_status_options", id: false, force: true do |t|
+    t.integer "application_id"
+    t.integer "student_status_id"
+  end
+  create_table "applications", force: true do |t|
+    t.string   "academic_year"
+    t.string   "semester"
+    t.text     "home_address"
+    t.string   "home_phone"
+    t.string   "student_id"
+    t.integer  "age"
+    t.string   "gender"
+    t.string   "parent_name"
+    t.text     "parent_address"
+    t.string   "parent_home_telephone"
+    t.string   "parent_work_telephone"
+    t.text     "student_status"
+    t.boolean  "roommate_preference"
+    t.string   "roommate1"
+    t.string   "roommate2"
+    t.string   "roommate3"
+    t.boolean  "any_disability"
+    t.text     "disability_description"
+    t.boolean  "previous_application"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "building_preference"
+    t.date     "date_of_birth"
+  end
+  add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
+  create_table "hall_applications", id: false, force: true do |t|
+    t.integer  "hall_id"
+    t.integer  "application_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
   create_table "hall_assignments", force: true do |t|
     t.integer  "user_id"
     t.integer  "hall_id"
@@ -14,6 +51,11 @@ ActiveRecord::Schema.define(version: 20140825192521) do
     t.datetime "updated_at",       null: false
   end
   add_index "halls", ["name"], name: "index_halls_on_name", unique: true, using: :btree
+  create_table "student_statuses", force: true do |t|
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
   create_table "users", force: true do |t|
     t.string   "email",                              null: false
     t.string   "password_digest",                    null: false
