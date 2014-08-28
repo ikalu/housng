@@ -19,6 +19,6 @@ class ApplicationsController < ApplicationController
     params.
       require(:application).
       permit(:academic_year, :semester, :home_address, :home_phone, :student_id, :age, :date_of_birth, :gender, :parent_name, :parent_address, :parent_home_telephone, :parent_work_telephone, :student_status, :building_preference, :roommate_preference, :roommate1, :roommate2, :roommate3, :any_disability, :disability_description, :previous_application).
-      merge(:user_id => current_user.id)
+      merge(user: current_user)
   end
 end

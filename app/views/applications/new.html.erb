@@ -3,7 +3,7 @@
   Academic year: <%= form.select :academic_year, 
     (2010..Time.now.year).map { |year| "#{year} / #{year + 1}" }, prompt: "Select Academic Year" %><br />
   Choose one: <%= form.radio_button :semester, "fall", :checked => true %>Fall <%= form.radio_button :semester, "spring" %>Spring <%= form.radio_button :semester, "summer" %>Summer<br />
-  Home address: <%= form.text_field :home_address, placeholder: "City\t""State\t""\tZip code" %>
+  Home address: <%= form.text_field :home_address, placeholder: "City\tState\tZip code" %>
   Home phone: <%= form.text_field :home_phone, placeholder: "1 (XXX)-XXX-XXXX" %>
   Student ID: <%= form.text_field :student_id %>
   Age: <%= form.text_field :age %>
@@ -13,7 +13,7 @@
     prompt: {year: "Choose year", month: "Choose month", day: "Choose day"} %>
   Gender: <%= form.radio_button :gender, "male", :checked => true %>Male <%= form.radio_button :gender, "female" %>Female
   Parent/Guardian name: <%= form.text_field :parent_name %>
-  Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\t""State\t""\tZip code" %>
+  Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\tState\tZip code" %>
   Parent/Guardian home phone: <%= form.text_field :parent_home_telephone, placeholder: "1 (XXX)-XXX-XXXX" %>
   Parent/Guardian work phone: <%= form.text_field :parent_work_telephone, placeholder: "1 (XXX)-XXX-XXXX" %><br />
   Student's current stauts at Claflin: <%= form.collection_check_boxes :student_status, StudentStatus.all, :status, :status  %><br />
@@ -24,9 +24,9 @@
   <i> (Please indicate roommate preference) </i><br />
   A. <%= form.radio_button :roommate_preference, "no" %> I have no roommate preference <br />
   B. <%= form.radio_button :roommate_preference, "yes" %> My choice of roommate/ suite mates is indicated below <span> <i>(Preferred roommates must submit applications to the Office of Residential Life at the same time. Please be advised that roommate requests can only be honored if space is available and paid at the same time) </i> </span><br />
-  ROOMMATE'S NAME: <%= form.text_field :roommate1, placeholder: "(lastname)\t""(firstname)\t""(mi)" %><br />
-  ROOMMATE'S NAME: <%= form.text_field :roommate2, placeholder: "(lastname)\t""(firstname)\t""(mi)" %><br />
-  ROOMMATE'S NAME: <%= form.text_field :roommate3, placeholder: "(lastname)\t""(firstname)\t""(mi)" %>
+  ROOMMATE'S NAME: <%= form.text_field :roommate1, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
+  ROOMMATE'S NAME: <%= form.text_field :roommate2, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
+  ROOMMATE'S NAME: <%= form.text_field :roommate3, placeholder: "(lastname)\t(firstname)\t(mi)" %>
   <h1> PART 4: OTHER INFORMATION </h1>
   A. Do you have a disability that requires special accommodation? <%= form.radio_button :any_disability, "Yes" %> Yes <%= form.radio_button :any_disability, "No", checked: true %> No <br />
   If yes, please attach information about your disability including verification from your personal physician. <%= form.text_area :disability_description %> <br />
