@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :hall_assignments
   has_many :halls, through: :hall_assignments
+  has_one :application
 
   validates :password_digest, presence: true
   validate :user_cannot_be_resident_manager_and_resident_assistant
