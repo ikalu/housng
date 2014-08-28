@@ -2,7 +2,7 @@
 <%= form_for @application do |form| %>
   Academic year: <%= form.select :academic_year, 
     (2010..Time.now.year).map { |year| "#{year} / #{year + 1}" }, prompt: "Select Academic Year" %><br />
-  Choose one: <%= form.radio_button :semester, "fall", :checked => true %>Fall <%= form.radio_button :semester, "spring" %>Spring <%= form.radio_button :semester, "summer" %>Summer<br />
+  Choose one: <%= form.radio_button :semester, "fall", checked: true %>Fall <%= form.radio_button :semester, "spring" %>Spring <%= form.radio_button :semester, "summer" %>Summer<br />
   Home address: <%= form.text_field :home_address, placeholder: "City\tState\tZip code" %>
   Home phone: <%= form.text_field :home_phone, placeholder: "1 (XXX)-XXX-XXXX" %>
   Student ID: <%= form.text_field :student_id %>
@@ -11,7 +11,7 @@
     start_year: 1900, end_year: Time.now.year, 
     order: [:year, :month, :day], 
     prompt: {year: "Choose year", month: "Choose month", day: "Choose day"} %>
-  Gender: <%= form.radio_button :gender, "male", :checked => true %>Male <%= form.radio_button :gender, "female" %>Female
+  Gender: <%= form.radio_button :gender, "male", checked: true %>Male <%= form.radio_button :gender, "female" %>Female
   Parent/Guardian name: <%= form.text_field :parent_name %>
   Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\tState\tZip code" %>
   Parent/Guardian home phone: <%= form.text_field :parent_home_telephone, placeholder: "1 (XXX)-XXX-XXXX" %>
