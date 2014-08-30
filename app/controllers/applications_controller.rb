@@ -4,12 +4,13 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    #raise application_params.inspect
     application = Application.new(application_params)
 
     if application.save
+      flash[:notice] = "Application submitted successfully"
       redirect_to dashboard_path
     else
+      flash[:alert] = "Application cannot be submitted"
       render :new
     end
   end
