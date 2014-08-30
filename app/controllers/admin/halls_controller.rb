@@ -1,4 +1,4 @@
-class Admin::HallsController < ApplicationController
+class Admin::HallsController < AdminController
   def index
     @halls = Hall.all
   end

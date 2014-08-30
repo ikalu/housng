@@ -12,9 +12,14 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
-  resources :applications, only: [:new, :create]
+  resources :applications, only: [:new, :create, :index, :show]
 
   namespace :admin do
+    resources :applications, only: [:index, :show, :update] do
+      member do
+        post "assign" => "room_assignments#create"
+      end
+    end
     resources :users, only: [:index, :update, :show] do
       resources :halls do
         member do
