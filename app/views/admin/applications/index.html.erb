@@ -1,0 +1,7 @@
+<h3>Submitted Applications</h3>
+
+<% @users.each do |user| %>
+  <% if user.application %>
+    <p><%= link_to user.email, [:admin, user.application] %></p>
+  <% end %>
+<% end %>

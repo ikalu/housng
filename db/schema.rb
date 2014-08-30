@@ -1,9 +1,5 @@
-ActiveRecord::Schema.define(version: 20140828191441) do
+ActiveRecord::Schema.define(version: 20140829182305) do
   enable_extension "plpgsql"
-  create_table "application_student_status_options", id: false, force: true do |t|
-    t.integer "application_id"
-    t.integer "student_status_id"
-  end
   create_table "applications", force: true do |t|
     t.string   "academic_year"
     t.string   "semester"
@@ -16,7 +12,6 @@ ActiveRecord::Schema.define(version: 20140828191441) do
     t.text     "parent_address"
     t.string   "parent_home_telephone"
     t.string   "parent_work_telephone"
-    t.text     "student_status"
     t.boolean  "roommate_preference"
     t.string   "roommate1"
     t.string   "roommate2"
@@ -27,10 +22,13 @@ ActiveRecord::Schema.define(version: 20140828191441) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "building_preference"
     t.date     "date_of_birth"
   end
   add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
+  create_table "applications_student_statuses", id: false, force: true do |t|
+    t.integer "application_id"
+    t.integer "student_status_id"
+  end
   create_table "hall_applications", id: false, force: true do |t|
     t.integer  "hall_id"
     t.integer  "application_id"

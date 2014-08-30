@@ -1,4 +1,4 @@
-class Admin::HallAssignmentsController < ApplicationController
+class Admin::HallAssignmentsController < AdminController
   def index
     @hall_assignments = HallAssignment.all
   end
