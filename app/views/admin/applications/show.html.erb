@@ -30,18 +30,22 @@ Student's current status at Claflin:
 <% else %>
   <p>I have no roommate preference</p>
 <% end %>
-<%= @application.roommate1 %>
-<%= @application.roommate2 %>
-<%= @application.roommate3 %>
+<% if @application.roommate_preference %>
+  <ol>
+    <li><%= @application.roommate1 %></li>
+    <li><%= @application.roommate2 %></li>
+    <li><%= @application.roommate3 %></li>
+  </ol>
+<% end %>
 <h1> PART 4: OTHER INFORMATION </h1>
 <% if @application.any_disability %>
   <p>I have a disability</P>
+  <ul>
+    <li><%= @application.disability_description %> <br /></li>
+  </ul>
 <% else %>
   <p>I have no disability</p>
 <% end %>
-<ul>
-  <li><%= @application.disability_description %> <br /></li>
-</ul>
 <% if @application.previous_application %>
   <p> I have previously applied for housing </p>
 <% else %>
