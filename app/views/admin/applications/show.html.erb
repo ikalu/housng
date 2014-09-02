@@ -1,4 +1,19 @@
+<% if @application %>
+  <ul>
+    <% @application.errors.full_messages.each do |error_message| %>
+      <li><%= error_message %></li>
+    <% end %>
+  </ul>
+<% end %>
 <h1> STUDENT HOUSING APPLICATION </h1>
+<% if @application.approve %>
+  <h2> This application has been approved </h2>
+<% elsif @application.decline%>
+  <h2> This application has been declined </h2>
+<% end %>
+<% if !@application.approve && !@application.decline %>
+  <h2> This application is pending </h2>
+<% end %>
 <h3><%= @application.user.email %></h3>
 Academic year: <%= @application.academic_year %>
 Choose one: <%= @application.semester %>
@@ -50,4 +65,15 @@ Student's current status at Claflin:
   <p> I have previously applied for housing </p>
 <% else %>
   <p> I have not previously applied for housing </p>
+<% end %>
+
+<% if !@application.approve %>
+  <%= button_to "Approve", admin_application_path(@application, approve: true), method: :put %>
+<% else %>
+  <%= button_to "Unapprove", admin_application_path(@application, approve: false), method: :put %>
+<% end %>
+<% if !@application.decline %>
+  <%= button_to "Decline", admin_application_path(@application, decline: true), method: :put %>
+<% else %>
+  <%= button_to "Undecline", admin_application_path(@application, decline: false), method: :put %>
 <% end %>

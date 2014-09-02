@@ -4,5 +4,18 @@ class Application < ActiveRecord::Base
   has_many :hall_applications
   has_many :halls, through: :hall_applications
 
+  validate :application_cannot_be_approve_and_decline
   validates :acknowledgement, acceptance: true
+
+  delegate :email, to: :user, allow_nil: true
+
+  default_scope { order("created_at ASC") }
+
+  private 
+
+  def application_cannot_be_approve_and_decline
+    if approve && decline
+      errors.add(:application, "cannot be both approved and declined")
+    end
+  end
 end

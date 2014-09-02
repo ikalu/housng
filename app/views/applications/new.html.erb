@@ -1,39 +1,51 @@
+<ul>
+  <% if flash.now[:alert] %>
+    <% flash.each do |name, msg| -%>
+      <li><%= content_tag :div, msg, class: name %></li>
+    <% end -%>
+  <% end %>
+  <% if @application.errors.any? %>
+    <% @application.errors.full_messages.each do |error_message| %>
+      <li><%= error_message %></li>
+    <% end %>
+  <% end %>
+</ul>
 <h1> STUDENT HOUSING APPLICATION </h1>
 <%= form_for @application do |form| %>
   Academic year: <%= form.select :academic_year, 
     (2010..Time.now.year).map { |year| "#{year} / #{year + 1}" }, prompt: "Select Academic Year" %><br />
-    Choose one: <%= form.radio_button :semester, "Fall", checked: true %>Fall <%= form.radio_button :semester, "Spring" %>Spring <%= form.radio_button :semester, "Summer" %>Summer<br />
-    Home address: <%= form.text_field :home_address, placeholder: "City\tState\tZip code" %>
-    Home phone: <%= form.text_field :home_phone, placeholder: "1 (XXX)-XXX-XXXX" %>
-    Student ID: <%= form.text_field :student_id %>
-    Age: <%= form.text_field :age %>
-    Date of birth: <%= form.date_select :date_of_birth, 
+  Choose one: <%= form.radio_button :semester, "Fall", checked: true %>Fall <%= form.radio_button :semester, "Spring" %>Spring <%= form.radio_button :semester, "Summer" %>Summer<br />
+  Home address: <%= form.text_field :home_address, placeholder: "City\tState\tZip code" %>
+  Home phone: <%= form.text_field :home_phone, placeholder: "1 (XXX)-XXX-XXXX" %>
+  Student ID: <%= form.text_field :student_id %>
+  Age: <%= form.text_field :age %>
+  Date of birth: <%= form.date_select :date_of_birth, 
       start_year: 1900, end_year: Time.now.year, 
       order: [:year, :month, :day], 
       prompt: {year: "Choose year", month: "Choose month", day: "Choose day"} %>
-      Gender: <%= form.radio_button :gender, "Male", checked: true %>Male <%= form.radio_button :gender, "Female" %>Female
-      Parent/Guardian name: <%= form.text_field :parent_name %>
-      Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\tState\tZip code" %>
-      Parent/Guardian home phone: <%= form.text_field :parent_home_telephone, placeholder: "1 (XXX)-XXX-XXXX" %>
-      Parent/Guardian work phone: <%= form.text_field :parent_work_telephone, placeholder: "1 (XXX)-XXX-XXXX" %><br />
-      Student's current stauts at Claflin: <%= form.collection_check_boxes(:student_status_ids, StudentStatus.all, :id, :status) %><br />
-      <h1> PART 2: BUILDING PREFERENCE </h1>
-      <i> (Please indicate your choice of residence hall in order preference) </i><br />
-      <%= form.collection_check_boxes(:hall_ids, Hall.all, :id, :name) %>
-      <h1> PART 3: ROOMMATE PREFERENCE </h1>
-      <i> (Please indicate roommate preference) </i><br />
-      A. Do you have roommate preferences? <%= form.check_box :roommate_preference %> <br />
-      My choice of roommate/ suite mates is indicated below <span> <i>(Preferred roommates must submit applications to the Office of Residential Life at the same time. Please be advised that roommate requests can only be honored if space is available and paid at the same time) </i> </span><br />
-      ROOMMATE'S NAME: <%= form.text_field :roommate1, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
-      ROOMMATE'S NAME: <%= form.text_field :roommate2, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
-      ROOMMATE'S NAME: <%= form.text_field :roommate3, placeholder: "(lastname)\t(firstname)\t(mi)" %>
-      <h1> PART 4: OTHER INFORMATION </h1>
-      A. Do you have a disability that requires special accommodation? <%= form.check_box :any_disability %>
-      If yes, please attach information about your disability including verification from your personal physician. <%= form.text_area :disability_description %> <br />
-      B. Have you previously applied for housing at Claflin University? <%= form.check_box :previous_application %>
-      <h1> PART 5: REQUIRED ACKNOWLEDGEMENT </h1>
-      <i>I understand that by signing below that it is expected that I reside in Claflin University housing for the entire academic year. I understand my preferences for residence halls and roommate will be honored if possible, but cannot be guaranteed. By signing below, I agree to respect and adhere to all policies and procedures of the Office of Residential Life and the Claflin University Student Code of Conduct.</i><br />
-      <%= form.check_box :acknowledgement %>I acknowledge.
+  Gender: <%= form.radio_button :gender, "Male", checked: true %>Male <%= form.radio_button :gender, "Female" %>Female
+  Parent/Guardian name: <%= form.text_field :parent_name %>
+  Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\tState\tZip code" %>
+  Parent/Guardian home phone: <%= form.text_field :parent_home_telephone, placeholder: "1 (XXX)-XXX-XXXX" %>
+  Parent/Guardian work phone: <%= form.text_field :parent_work_telephone, placeholder: "1 (XXX)-XXX-XXXX" %><br />
+  Student's current stauts at Claflin: <%= form.collection_check_boxes(:student_status_ids, StudentStatus.all, :id, :status) %><br />
+<h1> PART 2: BUILDING PREFERENCE </h1>
+<i> (Please indicate your choice of residence hall in order preference) </i><br />
+  <%= form.collection_check_boxes(:hall_ids, Hall.all, :id, :name) %>
+<h1> PART 3: ROOMMATE PREFERENCE </h1>
+ <i> (Please indicate roommate preference) </i><br />
+  A. Do you have roommate preferences? <%= form.check_box :roommate_preference %> <br />
+My choice of roommate/ suite mates is indicated below <span> <i>(Preferred roommates must submit applications to the Office of Residential Life at the same time. Please be advised that roommate requests can only be honored if space is available and paid at the same time) </i> </span><br />
+  ROOMMATE'S NAME: <%= form.text_field :roommate1, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
+  ROOMMATE'S NAME: <%= form.text_field :roommate2, placeholder: "(lastname)\t(firstname)\t(mi)" %><br />
+  ROOMMATE'S NAME: <%= form.text_field :roommate3, placeholder: "(lastname)\t(firstname)\t(mi)" %>
+<h1> PART 4: OTHER INFORMATION </h1>
+  A. Do you have a disability that requires special accommodation? <%= form.check_box :any_disability %>
+  If yes, please attach information about your disability including verification from your personal physician. <%= form.text_area :disability_description %> <br />
+  B. Have you previously applied for housing at Claflin University? <%= form.check_box :previous_application %>
+<h1> PART 5: REQUIRED ACKNOWLEDGEMENT </h1>
+  <i>I understand that by signing below that it is expected that I reside in Claflin University housing for the entire academic year. I understand my preferences for residence halls and roommate will be honored if possible, but cannot be guaranteed. By signing below, I agree to respect and adhere to all policies and procedures of the Office of Residential Life and the Claflin University Student Code of Conduct.</i><br />
+  <%= form.check_box :acknowledgement %>I acknowledge.
 
-      <%= form.submit "Submit" %>
-    <% end %>
+  <%= form.submit "Submit" %>
+<% end %>

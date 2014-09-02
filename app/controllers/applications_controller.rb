@@ -4,9 +4,9 @@ class ApplicationsController < ApplicationController
   end
 
   def create
-    application = Application.new(application_params)
+    @application = Application.new(application_params)
 
-    if application.save
+    if @application.save
       flash[:notice] = "Application submitted successfully."
       redirect_to dashboard_path
     else
