@@ -11,6 +11,10 @@ class Application < ActiveRecord::Base
 
   default_scope { order("created_at ASC") }
 
+  def pending?
+    !approve && !decline
+  end
+
   private 
 
   def application_cannot_be_approve_and_decline

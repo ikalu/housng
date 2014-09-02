@@ -1,17 +1,15 @@
-<% if @application %>
-  <ul>
-    <% @application.errors.full_messages.each do |error_message| %>
-      <li><%= error_message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<ul>
+  <% @application.errors.full_messages.each do |error_message| %>
+    <li><%= error_message %></li>
+  <% end %>
+</ul>
 <h1> STUDENT HOUSING APPLICATION </h1>
 <% if @application.approve %>
   <h2> This application has been approved </h2>
 <% elsif @application.decline%>
   <h2> This application has been declined </h2>
 <% end %>
-<% if !@application.approve && !@application.decline %>
+<% if @application.pending? %>
   <h2> This application is pending </h2>
 <% end %>
 <h3><%= @application.user.email %></h3>
@@ -40,7 +38,7 @@ Student's current status at Claflin:
   <% end %>
 </ol>
 <h1> PART 3: ROOMMATE PREFERENCE </h1>
-<% if  @application.roommate_preference %>
+<% if @application.roommate_preference %>
   <p>I have roommate preferences and below are their names</P>
 <% else %>
   <p>I have no roommate preference</p>
@@ -67,13 +65,11 @@ Student's current status at Claflin:
   <p> I have not previously applied for housing </p>
 <% end %>
 
-<% if !@application.approve %>
+<% if @application.pending? %>
   <%= button_to "Approve", admin_application_path(@application, approve: true), method: :put %>
-<% else %>
-  <%= button_to "Unapprove", admin_application_path(@application, approve: false), method: :put %>
-<% end %>
-<% if !@application.decline %>
   <%= button_to "Decline", admin_application_path(@application, decline: true), method: :put %>
-<% else %>
+<% elsif @application.approve && !@application.decline %>
+  <%= button_to "Unapprove", admin_application_path(@application, approve: false), method: :put %>
+<% elsif @application.decline && !@application.approve %>
   <%= button_to "Undecline", admin_application_path(@application, decline: false), method: :put %>
 <% end %>

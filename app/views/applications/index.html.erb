@@ -1,0 +1,19 @@
+<h3>Please see your applications' statuses below</h3>
+
+<ol>
+  <% @applications.each do |application| %>
+    <% if application.user == current_user %>
+      <li>
+        <%= link_to "Application", application %>
+        <% if application.approve %>
+          Approved
+        <% elsif application.decline %>
+          Declined
+        <% else %>
+          Pending
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ol>
+
