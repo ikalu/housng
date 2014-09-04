@@ -5,6 +5,7 @@
 </ul>
 
 <h1> STUDENT HOUSING APPLICATION </h1>
+
 <h3><%= @application.email %></h3>
 Academic year: <%= @application.academic_year %>
 Choose one: <%= @application.semester %>
@@ -27,6 +28,7 @@ Student's current status at Claflin:
 </ul>
 
 <h1> PART 2: BUILDING PREFERENCE </h1>
+
 <ol>
   <% @application.halls.map do |hall| %>
     <li><%= hall.name %></li>
@@ -34,6 +36,7 @@ Student's current status at Claflin:
 </ol>
 
 <h1> PART 3: ROOMMATE PREFERENCE </h1>
+
 <% if @application.roommate_preference %>
   <p>I have roommate preferences and below are their names</P>
 <% else %>
@@ -49,6 +52,7 @@ Student's current status at Claflin:
 <% end %>
 
 <h1> PART 4: OTHER INFORMATION </h1>
+
 <% if @application.any_disability %>
   <p>I have a disability</P>
   <ul>
