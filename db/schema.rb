@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140901030959) do
+ActiveRecord::Schema.define(version: 20140904064130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,12 +39,9 @@ ActiveRecord::Schema.define(version: 20140901030959) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.date     "date_of_birth"
-    t.boolean  "approve",                default: false
-    t.boolean  "decline",                default: false
+    t.string   "status",                 default: "pending"
   end
 
-  add_index "applications", ["approve"], name: "index_applications_on_approve", using: :btree
-  add_index "applications", ["decline"], name: "index_applications_on_decline", using: :btree
   add_index "applications", ["user_id"], name: "index_applications_on_user_id", using: :btree
 
   create_table "applications_student_statuses", id: false, force: true do |t|

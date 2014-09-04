@@ -3,16 +3,9 @@
     <li><%= error_message %></li>
   <% end %>
 </ul>
+
 <h1> STUDENT HOUSING APPLICATION </h1>
-<% if @application.approve %>
-  <h2> This application has been approved </h2>
-<% elsif @application.decline%>
-  <h2> This application has been declined </h2>
-<% end %>
-<% if @application.pending? %>
-  <h2> This application is pending </h2>
-<% end %>
-<h3><%= @application.user.email %></h3>
+<h3><%= @application.email %></h3>
 Academic year: <%= @application.academic_year %>
 Choose one: <%= @application.semester %>
 Home address: <%= @application.home_address %>
@@ -25,24 +18,28 @@ Parent/Guardian name: <%= @application.parent_name %>
 Parent/Guardian address: <%= @application.parent_address %>
 Parent/Guardian home phone: <%= @application.parent_home_telephone %>
 Parent/Guardian work phone: <%= @application.parent_work_telephone %><br />
+
 Student's current status at Claflin: 
 <ul>
   <% @application.student_statuses.each do |status| %>
     <li><%= status.status %></li>
   <% end %>
 </ul>
+
 <h1> PART 2: BUILDING PREFERENCE </h1>
 <ol>
   <% @application.halls.map do |hall| %>
     <li><%= hall.name %></li>
   <% end %>
 </ol>
+
 <h1> PART 3: ROOMMATE PREFERENCE </h1>
 <% if @application.roommate_preference %>
   <p>I have roommate preferences and below are their names</P>
 <% else %>
   <p>I have no roommate preference</p>
 <% end %>
+
 <% if @application.roommate_preference %>
   <ol>
     <li><%= @application.roommate1 %></li>
@@ -50,6 +47,7 @@ Student's current status at Claflin:
     <li><%= @application.roommate3 %></li>
   </ol>
 <% end %>
+
 <h1> PART 4: OTHER INFORMATION </h1>
 <% if @application.any_disability %>
   <p>I have a disability</P>
@@ -59,6 +57,7 @@ Student's current status at Claflin:
 <% else %>
   <p>I have no disability</p>
 <% end %>
+
 <% if @application.previous_application %>
   <p> I have previously applied for housing </p>
 <% else %>
@@ -66,10 +65,10 @@ Student's current status at Claflin:
 <% end %>
 
 <% if @application.pending? %>
-  <%= button_to "Approve", admin_application_path(@application, approve: true), method: :put %>
-  <%= button_to "Decline", admin_application_path(@application, decline: true), method: :put %>
-<% elsif @application.approve && !@application.decline %>
-  <%= button_to "Unapprove", admin_application_path(@application, approve: false), method: :put %>
-<% elsif @application.decline && !@application.approve %>
-  <%= button_to "Undecline", admin_application_path(@application, decline: false), method: :put %>
+  <%= button_to "Approve", admin_application_path(@application, status: "approved"), method: :put %>
+  <%= button_to "Decline", admin_application_path(@application, status: "declined"), method: :put %>
+<% elsif @application.approved? %>
+  <%= button_to "Unapprove", admin_application_path(@application, status: "pending"), method: :put %>
+<% elsif @application.declined? %>
+  <%= button_to "Undecline", admin_application_path(@application, status: "pending"), method: :put %>
 <% end %>

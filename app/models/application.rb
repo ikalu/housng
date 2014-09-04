@@ -12,13 +12,21 @@ class Application < ActiveRecord::Base
   default_scope { order("created_at ASC") }
 
   def pending?
-    !approve && !decline
+    status == "pending"
+  end
+
+  def approved?
+    status == "approved"
+  end
+
+  def declined?
+    status == "declined"
   end
 
   private 
 
   def application_cannot_be_approve_and_decline
-    if approve && decline
+    if status == "approved" && status == "declined"
       errors.add(:application, "cannot be both approved and declined")
     end
   end

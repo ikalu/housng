@@ -1,21 +1,14 @@
 <h3>Submitted Applications</h3>
+
 <ul>
-  <% if flash[:notice] %>
-    <% flash.each do |name, msg| -%>
-      <li><%= content_tag :div, msg, class: name %></li>
-    <% end -%>
-  <% end %>
+  <% flash.each do |name, msg| -%>
+    <li><%= content_tag :div, msg, class: name %></li>
+  <% end -%>
 </ul>
 
 <% @applications.each do |application| %>
   <p>
     <%= link_to application.email, [:admin, application] %>
-    <% if application.approve %>
-      Approved
-    <% elsif application.decline %>
-      Declined
-    <% else %>
-      Pending
-    <% end %>
+    <%= application.status.capitalize %>
   </p>
 <% end %>
