@@ -5,13 +5,7 @@
     <% if application.user == current_user %>
       <li>
         <%= link_to "Application", application %>
-        <% if application.approve %>
-          Approved
-        <% elsif application.decline %>
-          Declined
-        <% else %>
-          Pending
-        <% end %>
+        <%= application.status.capitalize %>
       </li>
     <% end %>
   <% end %>
