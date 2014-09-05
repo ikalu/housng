@@ -22,12 +22,4 @@ class Application < ActiveRecord::Base
   def declined?
     status == "declined"
   end
-
-  private 
-
-  def application_cannot_be_approve_and_decline
-    if status == "approved" && status == "declined"
-      errors.add(:application, "cannot be both approved and declined")
-    end
-  end
 end

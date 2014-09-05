@@ -28,7 +28,7 @@
   Parent/Guardian address: <%= form.text_field :parent_address, placeholder: "City\tState\tZip code" %>
   Parent/Guardian home phone: <%= form.text_field :parent_home_telephone, placeholder: "1 (XXX)-XXX-XXXX" %>
   Parent/Guardian work phone: <%= form.text_field :parent_work_telephone, placeholder: "1 (XXX)-XXX-XXXX" %><br />
-  Student's current stauts at Claflin: <%= form.collection_check_boxes(:student_status_ids, StudentStatus.all, :id, :status) %><br />
+  Student's current status at Claflin: <%= form.collection_check_boxes(:student_status_ids, StudentStatus.all, :id, :status) %><br />
 <h1> PART 2: BUILDING PREFERENCE </h1>
 <i> (Please indicate your choice of residence hall in order preference) </i><br />
   <%= form.collection_check_boxes(:hall_ids, Hall.all, :id, :name) %>

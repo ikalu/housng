@@ -12,7 +12,7 @@ class Admin::ApplicationsController < AdminController
     @application.update(status: params[:status])
 
     if @application.save
-      flash_notification_message
+      flash[:notice] = flash_notification_message
 
       redirect_to admin_applications_path
     else
@@ -24,9 +24,9 @@ class Admin::ApplicationsController < AdminController
 
   def flash_notification_message
     if @application.approved?
-      flash[:notice] = "#{@application.user.email}'s application has been approved"
+      "#{@application.user.email}'s application has been approved"
     elsif @application.declined?
-      flash[:notice] = "#{@application.user.email}'s application has been declined"
+      "#{@application.user.email}'s application has been declined"
     end
   end
 end
