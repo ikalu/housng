@@ -1,0 +1,71 @@
+<nav class="navbar navbar-static">
+    <div class="container">
+      <a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </a>
+      <div class="nav-collapse collase">
+        <ul class="nav navbar-nav"> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing</a> 
+            <ul class="dropdown-menu">
+              <li><%= link_to "Residence Halls", halls_path %></li>
+              <li><%= link_to "Rates and Amenities", halls_path %></li>
+              <li><%= link_to "Housing Application", new_application_path %></li>
+              <li><%= link_to "Housing Contract", halls_path %></li>
+              <li><%= link_to "Housing for Current Residents", halls_path %></li>
+              <li><%= link_to "Housing for Incoming Residents", halls_path %></li>
+              <li><%= link_to "Spring Housing", halls_path %></li>
+              <li><%= link_to "Summer Housing", halls_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "About", root_path %></li>
+             </ul>
+          </li>  
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services & Forms</a> 
+            <ul class="dropdown-menu">
+              <li><%= link_to "Maintenance Requests", halls_path %></li>
+              <li><%= link_to "Room Move Requests", halls_path %></li>
+              <li><%= link_to "Space Reservation", halls_path %></li>
+              <li><%= link_to "Housing Contract", halls_path %></li>
+              <li><%= link_to "Housing Policy", halls_path %></li>
+              <li><%= link_to "Residential Life Cares", halls_path %></li>
+              <li><%= link_to "Artwork Submissions", halls_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "About", root_path %></li>
+             </ul>
+          </li> 
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff</a> 
+            <ul class="dropdown-menu">
+              <li><%= link_to "Full-time Staff", halls_path %></li>
+              <li><%= link_to "Student Staff", halls_path %></li>
+              <li><%= link_to "Employment", halls_path %></li>
+              <li><%= link_to "Staff Resources", halls_path %></li>
+              <li class="divider"></li>
+              <li><%= link_to "Contact Us", root_path %></li>
+             </ul>
+          </li> 
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="nav navbar-right navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-search"></i></a>
+            <ul class="dropdown-menu" style="padding:12px;">
+                <form class="form-inline">
+            <button type="submit" class="btn btn-default pull-right"><i class="glyphicon glyphicon-search"></i></button><input type="text" class="form-control pull-left" placeholder="Search">
+                </form>
+              </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a> 
+            <ul class="dropdown-menu">
+              <li><%= render "login" %></li>
+              <li><a href="#">Profile</a></li>
+              <li class="divider"></li>
+              <li><a href="#">About</a></li>
+             </ul>
+          </li>  
+        </ul>
+      </div>    
+    </div>
+</nav><!-- /.navbar -->

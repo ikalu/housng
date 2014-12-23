@@ -3,6 +3,6 @@
 
 <ul>
   <% @halls.each do |hall| %>
-    <li><%= hall.name %></li>
+    <li><%= link_to hall.name, [:admin, hall] %></li>
   <% end %>
 </ul>

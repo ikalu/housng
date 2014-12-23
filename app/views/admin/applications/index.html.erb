@@ -10,5 +10,8 @@
   <p>
     <%= link_to application.email, [:admin, application] %>
     <%= application.status.capitalize %>
+    <% if application.status == "approved" %>
+    <% end %>
   </p>
 <% end %>
+

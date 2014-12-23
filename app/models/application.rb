@@ -4,7 +4,6 @@ class Application < ActiveRecord::Base
   has_many :hall_applications
   has_many :halls, through: :hall_applications
 
-  validate :application_cannot_be_approve_and_decline
   validates :acknowledgement, acceptance: true
 
   delegate :email, to: :user, allow_nil: true

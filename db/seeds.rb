@@ -9,3 +9,10 @@ residential_halls = ["Asbury - Freshmen - Females", "Corson - Freshmen - Females
 residential_halls.map do |residential_hall|
   Hall.find_or_create_by(name: residential_hall, number_of_rooms: "130")
 end
+
+halls = Hall.all
+halls.map do |hall|
+  hall.number_of_rooms.times do |room_number|
+    Room.find_or_create_by(room_number: room_number + 1, hall_id: hall.id)
+  end
+end

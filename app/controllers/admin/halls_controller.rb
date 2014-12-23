@@ -17,6 +17,11 @@ class Admin::HallsController < AdminController
     end
   end
 
+  def show
+    hall = Hall.find(params[:id])
+    @rooms = hall.rooms.all
+  end
+
   private
 
   def hall_params

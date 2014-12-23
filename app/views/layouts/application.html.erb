@@ -1,21 +1,24 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>Housng</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Residential Life | Claflin University</title>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
+
   <body>
-    <% if signed_in? %>
-      Welcome <%= current_user.email %> |
-      <%= link_to "Sign out", session_path, method: :delete %>
-    <% else %>
-      <%= link_to "Sign in", new_session_path %>
-      <%= link_to "Sign up", new_user_path %>
-    <% end %>
+
+    <%= render "navbar" %> 
 
     <%= yield %>
+
+    <%= render "footer" %> 
 
   </body>
 </html>

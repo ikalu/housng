@@ -13,14 +13,17 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
   resources :applications, only: [:new, :create, :index, :show]
+  resources :halls, only: [:index, :show]
 
   namespace :admin do
-    resources :applications, only: [:index, :show, :update] do
-      member do
-        post "assign" => "room_assignments#create"
-      end
-    end
+    resources :rooms, only: [:index]
+    resources :applications, only: [:index, :show, :update]
     resources :users, only: [:index, :update, :show] do
+      resources :applications do
+        member do
+          post "assign" => "room_assignments#create"
+        end
+      end
       resources :halls do
         member do
           post "assign" => "hall_assignments#create"
@@ -28,7 +31,7 @@ Rails.application.routes.draw do
         end
       end
     end
-    resources :halls, only: [:index, :new, :create]
+    resources :halls, only: [:index, :new, :create, :show]
     resources :hall_assignments, only: [:index]
   end
 

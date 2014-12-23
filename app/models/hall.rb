@@ -3,6 +3,7 @@ class Hall < ActiveRecord::Base
   has_many :users, through: :hall_assignments
   has_many :hall_applications
   has_many :applications, through: :hall_applications
+  has_many :rooms
 
   validates :number_of_rooms, presence: true
 end

@@ -1,0 +1,19 @@
+<%= render "header_for_body" %> 
+
+<!-- Begin Body -->
+<div class="container">
+	<div class="row">
+  			<%= render "side_nav" %> 
+      		<div class="col col-sm-9">
+              <div class="panel">
+              	<h1>Residence Halls</h1>
+				<ul>
+				  <% @halls.each do |hall| %>
+				    <hr>
+				    <li><%= link_to hall.name, hall %></li>
+				  <% end %>
+				</ul>
+              </div>
+      	    </div> 
+  	</div>
+</div>

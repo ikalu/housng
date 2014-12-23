@@ -8,11 +8,13 @@
 
 <% @users.each do |user| %>
   <% if user != current_user %>
-    <p><%= user.email %> 
+    <p>
+      <%= user.email %><br />
       <%= toggle_resident_manager_link(user) %>
       <%= toggle_resident_assistant_link(user) %>
       <% if user.staff? %>
         <%= hall_assignment_link(user) %>
       <% end %>
-    <% end %>
+    </p>
   <% end %>
+<% end %>
