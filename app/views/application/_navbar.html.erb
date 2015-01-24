@@ -9,13 +9,13 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Housing</a> 
             <ul class="dropdown-menu">
               <li><%= link_to "Residence Halls", halls_path %></li>
-              <li><%= link_to "Rates and Amenities", halls_path %></li>
+              <li><%= link_to "Rates and Amenities", static_path('rates') %></li>
               <li><%= link_to "Housing Application", new_application_path %></li>
-              <li><%= link_to "Housing Contract", halls_path %></li>
-              <li><%= link_to "Housing for Current Residents", halls_path %></li>
-              <li><%= link_to "Housing for Incoming Residents", halls_path %></li>
-              <li><%= link_to "Spring Housing", halls_path %></li>
-              <li><%= link_to "Summer Housing", halls_path %></li>
+              <li><%= link_to "Housing Contract", static_path('contract') %></li>
+              <li><%= link_to "Housing for Current Residents", static_path('current') %></li>
+              <li><%= link_to "Housing for Incoming Residents", static_path('incoming') %></li>
+              <li><%= link_to "Spring Housing", static_path('spring') %></li>
+              <li><%= link_to "Summer Housing", static_path('summer') %></li>
               <li class="divider"></li>
               <li><%= link_to "About", root_path %></li>
              </ul>
@@ -23,13 +23,13 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services & Forms</a> 
             <ul class="dropdown-menu">
-              <li><%= link_to "Maintenance Requests", halls_path %></li>
-              <li><%= link_to "Room Move Requests", halls_path %></li>
-              <li><%= link_to "Space Reservation", halls_path %></li>
-              <li><%= link_to "Housing Contract", halls_path %></li>
-              <li><%= link_to "Housing Policy", halls_path %></li>
-              <li><%= link_to "Residential Life Cares", halls_path %></li>
-              <li><%= link_to "Artwork Submissions", halls_path %></li>
+              <li><%= link_to "Maintenance Requests", static_path('maintenance') %></li>
+              <li><%= link_to "Room Move Requests", static_path('room_move') %></li>
+              <li><%= link_to "Space Reservation", static_path('space') %></li>
+              <li><%= link_to "Housing Contract", static_path('contract') %></li>
+              <li><%= link_to "Housing Policy", static_path('policy') %></li>
+              <li><%= link_to "Residential Life Cares", static_path('cares') %></li>
+              <li><%= link_to "Artwork Submissions", static_path('artwork') %></li>
               <li class="divider"></li>
               <li><%= link_to "About", root_path %></li>
              </ul>
@@ -37,8 +37,8 @@
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Staff</a> 
             <ul class="dropdown-menu">
-              <li><%= link_to "Full-time Staff", halls_path %></li>
-              <li><%= link_to "Student Staff", halls_path %></li>
+              <li><%= link_to "Full-time Staff", static_path('full_time') %></li>
+              <li><%= link_to "Student Staff", static_path('student_staff') %></li>
               <li><%= link_to "Employment", halls_path %></li>
               <li><%= link_to "Staff Resources", halls_path %></li>
               <li class="divider"></li>
