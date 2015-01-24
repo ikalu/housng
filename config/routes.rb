@@ -35,4 +35,5 @@ Rails.application.routes.draw do
     resources :hall_assignments, only: [:index]
   end
 
+  get  ':page', to: 'pages#static_page',  as: :static
 end
